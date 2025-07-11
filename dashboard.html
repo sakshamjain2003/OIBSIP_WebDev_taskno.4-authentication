@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome, <span id="user"></span>!</h1>
+    <p>This is your dashboard.</p>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    const user = localStorage.getItem("currentUser");
+    const loggedIn = localStorage.getItem("loggedIn");
+
+    if (!loggedIn) {
+      alert("You must be logged in to access this page.");
+      window.location.href = "login.html";
+    } else {
+      document.getElementById("user").textContent = user;
+    }
+
+    function logout() {
+      localStorage.removeItem("loggedIn");
+      localStorage.removeItem("currentUser");
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>
